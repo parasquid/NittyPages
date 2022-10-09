@@ -1,5 +1,5 @@
-<div class="grid grid-cols-4 gap-4">
-  <div class="col-span-1 min-w-max">
+<div class="grid grid-cols-4 gap-4 h-[90vh]">
+  <div class="lg:block lg:col-span-1 lg:min-w-max hidden">
     <%= turbo_frame_tag 'calendar' do %>
       <% cache @note do %>
         <%= render "calendar", note: @note%>
@@ -8,7 +8,7 @@
 
   </div>
 
-  <div class="h-screen col-start-2 col-span-4">
+  <div class="lg:h-full lg:col-start-2 col-start-1 col-span-4">
     <%= render "form", note: @note%>
   </div>
 </div>

@@ -1,6 +1,6 @@
-<%= form_with model: @note do |form| %>
-  <div>
-    <%= form.text_area :body %>
+<%= form_with model: @note, html: { class: "w-full h-full" } do |form| %>
+  <div class="w-full h-full">
+    <%= form.text_area :body, class: 'w-full h-full' %>
   </div>
 
   <%= form.hidden_field :date %>
