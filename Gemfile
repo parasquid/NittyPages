@@ -64,6 +64,6 @@ group :development do
   # gem "spring"
 end
 
-gem "simple_calendar", "~> 2.4"
+gem "simple_calendar", git: 'https://github.com/parasquid/simple_calendar'
 
 gem "tailwindcss-rails", "~> 2.0"
