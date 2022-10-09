@@ -1,5 +1,15 @@
-<h1><%= @note.date %></h1>
+<div>
+  <%= turbo_frame_tag 'calendar' do %>
+    <%= month_calendar do |date| %>
+      <%= date.mday %>
+    <% end %>
+  <% end %>
+</div>
 
-<p><%= @note.body %></p>
+<div class="prose lg:prose-xl">
+  <h1><%= @note.date %></h1>
 
-<%= render "form", note: @note%>
+  <p><%= @note.body %></p>
+
+  <%= render "form", note: @note%>
+</div>

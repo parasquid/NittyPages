@@ -64,3 +64,6 @@ group :development do
   # gem "spring"
 end
 
+gem "simple_calendar", "~> 2.4"
+
+gem "tailwindcss-rails", "~> 2.0"
