@@ -1,18 +1,15 @@
 <%= month_calendar(start_date_param: :id) do |date| %>
   <%= link_to note_path(date), data: { turbo_frame: '_top' } do %>
     <div class="
-      <%= today_class(date) %>
-      <%= has_notes_class(date) %>
-      <%= next_month_class(date, params[:id]) %>
-      <%= prev_month_class(date, params[:id]) %>
-      <%= current_date_class(date, params[:id]) %>
+      <%= date_classes(date, params[:id]) %>
       h-12 w-full
-      hover:bg-sky-300
       min-w-fit
       border border-gray-300
       table
     ">
-      <span class="table-cell align-middle text-center"><%= date.mday %></span>
+      <span class="table-cell align-middle text-center">
+        <%= date.mday %>
+      </span>
     </div>
   <% end %>
 <% end %>
