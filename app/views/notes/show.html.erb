@@ -1,15 +1,12 @@
-<div>
-  <%= turbo_frame_tag 'calendar' do %>
-    <%= month_calendar do |date| %>
-      <%= date.mday %>
+<div class="grid grid-cols-4 gap-4">
+  <div class="col-span-1 min-w-max">
+    <%= turbo_frame_tag 'calendar' do %>
+      <%= render "calendar", note: @note%>
     <% end %>
-  <% end %>
-</div>
 
-<div class="prose lg:prose-xl">
-  <h1><%= @note.date %></h1>
+  </div>
 
-  <p><%= @note.body %></p>
-
-  <%= render "form", note: @note%>
+  <div class="h-screen col-start-2 col-span-4">
+    <%= render "form", note: @note%>
+  </div>
 </div>
