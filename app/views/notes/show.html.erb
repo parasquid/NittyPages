@@ -1,7 +1,9 @@
 <div class="grid grid-cols-4 gap-4">
   <div class="col-span-1 min-w-max">
     <%= turbo_frame_tag 'calendar' do %>
-      <%= render "calendar", note: @note%>
+      <% cache @note do %>
+        <%= render "calendar", note: @note%>
+      <% end %>
     <% end %>
 
   </div>
