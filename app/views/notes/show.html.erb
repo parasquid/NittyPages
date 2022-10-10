@@ -1,14 +1,24 @@
 <div class="grid grid-cols-4 gap-4 h-[90vh]">
   <div class="lg:block lg:col-span-1 lg:min-w-max hidden">
-    <%= turbo_frame_tag 'calendar' do %>
-      <% cache @note do %>
-        <%= render "calendar", note: @note%>
+    <div class="py-2">
+      <%= turbo_frame_tag 'calendar' do %>
+        <% cache @note do %>
+          <%= render "calendar", note: @note%>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+
+    <hr />
+
+    <div class="py-2 w-80 lg:w-64 xl:w-96">
+      <%= render "checklist", note: @note %>
+    </div>
+
+    <%= link_to "This month's notes", notes_path, class: "cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2" %>
 
   </div>
 
   <div class="lg:h-full lg:col-start-2 col-start-1 col-span-4">
-    <%= render "form", note: @note%>
+    <%= render "form", note: @note %>
   </div>
 </div>

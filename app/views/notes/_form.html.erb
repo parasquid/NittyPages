@@ -5,7 +5,10 @@
 
   <%= form.hidden_field :date %>
 
-  <div>
-    <%= form.submit %>
+  <div class="py-2" >
+    <%= form.submit nil, class: "cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2" %>
+    <% if @note.persisted? %>
+      <span>Last saved: <%= time_ago_in_words @note.updated_at %> ago.
+    <% end %>
   </div>
 <% end %>

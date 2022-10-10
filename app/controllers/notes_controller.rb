@@ -1,4 +1,8 @@
 class NotesController < ApplicationController
+  def index
+    @notes = Note.where(date: (Date.today.beginning_of_month...Date.today.end_of_month).map(&:to_s))
+  end
+
   def show
     @note = Note.where(date: params[:id]).first || Note.new(date: params[:id])
   end
