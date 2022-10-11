@@ -1,5 +1,5 @@
 <div class="py-2">
-<% @notes.each do |note| %>
+<% @notes.reverse.each do |note| %>
   <div class="py-2">
     <%= link_to note_path(note) do %>
       <span class="underline text-blue-600">

@@ -3,35 +3,33 @@ class Note < ApplicationRecord
 
   def to_param() = date
 
-  def todos(sigil: ENV.fetch("SIGIL_TODO") { "=" })
-    Rails.cache.fetch([self, :todos]) do
-      return [] unless persisted?
+  def checklist_items(sigils: {
+    todos: ENV.fetch("SIGIL_TODO") { "=" },
+    dones: ENV.fetch("SIGIL_DONE") { "~" },
+  })
+    ret_val = {
+      todos: [],
+      dones: [],
+    }
+    return ret_val unless persisted?
+
+    Rails.cache.fetch([self, :checklist_items]) do
       body
         .each_line
         .map.with_index { |line, number|
-          next unless line.start_with? "#{sigil} "
-          {
-            line: line.chomp.gsub(sigil, ""),
-            number: number
-          }
+          sigils.each do |key, sigil|
+            next unless line.start_with? "#{sigil} "
+            ret_val.fetch(key).push({
+              line: line.chomp.gsub(sigil, ""),
+              number: number + 1
+            })
+          end
         }
         .compact
-      end
+
+      puts ret_val.inspect
+      ret_val
+    end
   end
 
-  def dones(sigil: ENV.fetch("SIGIL_DONE") { "~" })
-    Rails.cache.fetch([self, :dones]) do
-      return [] unless persisted?
-      body
-        .each_line
-        .map.with_index { |line, number|
-          next unless line.start_with? "#{sigil} "
-          {
-            line: line.chomp.gsub(sigil, ""),
-            number: number
-          }
-        }
-        .compact
-      end
-  end
 end
