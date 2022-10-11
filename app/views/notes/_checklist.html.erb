@@ -1,4 +1,10 @@
 <ul class="whitespace-normal w-full list-[square] px-4">
+  <% note.checklist_items.fetch(:crits).each do |todo| %>
+    <li class="font-bold"><%= todo.fetch(:line) %> [<%= todo.fetch(:number) %>]</li>
+  <% end %>
+</ul>
+
+<ul class="whitespace-normal w-full list-[square] px-4">
   <% note.checklist_items.fetch(:todos).each do |todo| %>
     <li class=""><%= todo.fetch(:line) %> [<%= todo.fetch(:number) %>]</li>
   <% end %>

@@ -6,10 +6,12 @@ class Note < ApplicationRecord
   def checklist_items(sigils: {
     todos: ENV.fetch("SIGIL_TODO") { "=" },
     dones: ENV.fetch("SIGIL_DONE") { "~" },
+    crits: ENV.fetch("SIGIL_CRIT") { "!" },
   })
     ret_val = {
       todos: [],
       dones: [],
+      crits: [],
     }
     return ret_val unless persisted?
 
