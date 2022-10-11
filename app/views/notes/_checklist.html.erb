@@ -3,3 +3,9 @@
     <li class="">[<%= todo.fetch(:number) %>]<%= todo.fetch(:line) %></li>
   <% end %>
 </ul>
+
+<ul class="whitespace-normal w-full list-[square] px-4">
+  <% note.dones.each do |todo| %>
+    <li class="line-through">[<%= todo.fetch(:number) %>]<%= todo.fetch(:line) %></li>
+  <% end %>
+</ul>
