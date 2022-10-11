@@ -1,5 +1,5 @@
 <ul class="whitespace-normal w-full list-[square] px-4">
   <% note.todos.each do |todo| %>
-    <li class=""><%= todo %></li>
+    <li class="">[<%= todo.fetch(:number) %>]<%= todo.fetch(:line) %></li>
   <% end %>
 </ul>
